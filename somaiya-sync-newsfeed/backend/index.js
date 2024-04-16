@@ -29,7 +29,6 @@ app.get('/', (req, res) => {
   res.send('Welcome to the news feed API');
 });
 
-
 app.get('/news', async (req, res) => {
   try {
     const news = await NewsFeed.find().sort({ createdAt: -1 });
@@ -74,6 +73,8 @@ setInterval(async()=>{
     console.error('Error refreshing news data:',error);
   }
 },refreshInterval);
+
+
 
 // Start server
 app.listen(PORT, () => {

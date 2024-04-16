@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './App.css'
 import axios from 'axios';
 
 function App() {
@@ -47,35 +48,72 @@ function App() {
     fetchNews();
   },[newsFeed]);
 
-  return (
-    <div>
-      <h1>News Feed</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Content"
-          value={content}
-          onChange={e => setContent(e.target.value)}
-        />
-        <button onClick={handleAddNews}>Add News</button>
-      </div>
-      <div>
-        {newsFeed.map(news => (
-          <div key={news._id}>
-            <h3>{news.title}</h3>
-            <p>{news.content}</p>
-            <button onClick={() => handleDeleteNews(news._id)}>Delete</button>
-          </div>
-        ))}
-      </div>
+//   return (
+//     <div>
+//       <h1>News Feed</h1>
+//       <div>
+//         <input
+//           type="text"
+//           placeholder="Title"
+//           value={title}
+//           onChange={e => setTitle(e.target.value)}
+//         />
+//         <input
+//           type="text"
+//           placeholder="Content"
+//           value={content}
+//           onChange={e => setContent(e.target.value)}
+//         />
+//         <button onClick={handleAddNews}>Add News</button>
+//       </div>
+//       <div>
+//         {newsFeed.map(news => (
+//           <div key={news._id}>
+//             <h3>{news.title}</h3>
+//             <p>{news.content}</p>
+//             <button onClick={() => handleDeleteNews(news._id)}>Delete</button>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// }
+
+return (
+  <div className="container">
+    <h1 className="heading">somaiyaSync News-Feed</h1>
+    <div className="input-container">
+      <input
+        className="input-field"
+        type="text"
+        placeholder="Title"
+        value={title}
+        onChange={e => setTitle(e.target.value)}
+      />
+      <input
+        className="input-field"
+        type="text"
+        placeholder="Content"
+        value={content}
+        onChange={e => setContent(e.target.value)}
+      />
+      <button className="add-button" onClick={handleAddNews}>Add News</button>
     </div>
-  );
+    <div className="news-container">
+      {newsFeed.map(news => (
+        <div key={news._id} className="news-card">
+          <h3>{news.title}</h3>
+          <p>{news.content}</p>
+          <button className="delete-button" onClick={() => handleDeleteNews(news._id)}>Delete</button>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 }
 
+
 export default App;
+
+
+
